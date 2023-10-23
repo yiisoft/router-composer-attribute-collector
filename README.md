@@ -15,7 +15,7 @@
 [![type-coverage](https://shepherd.dev/github/yiisoft/router-composer-attribute-collector/coverage.svg)](https://shepherd.dev/github/yiisoft/router-composer-attribute-collector)
 [![psalm-level](https://shepherd.dev/github/yiisoft/router-composer-attribute-collector/level.svg)](https://shepherd.dev/github/yiisoft/router-composer-attribute-collector)
 
-The package provides a router collector for [Yii Router](https://github.com/yiisoft/router) that collects routes declared through attributes
+The package provides a router collector for [Yii Router](https://github.com/yiisoft/router) that collects routes declared through attributes.
 
 ## Requirements
 
@@ -26,7 +26,7 @@ The package provides a router collector for [Yii Router](https://github.com/yiis
 The package could be installed with composer:
 
 ```shell
-composer require yiisoft/Router Composer Attribute Composer Collector
+composer require yiisoft/router-composer-attribute-collector
 ```
 
 ## General usage
