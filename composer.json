@@ -1,19 +1,19 @@
 {
-    "name": "yiisoft/_____",
+    "name": "yiisoft/router-composer-attribute-collector",
     "type": "library",
-    "description": "_____",
+    "description": "Router collector from PHP Attributes using composer plugin",
     "keywords": [
-        "_____"
+        "router", "composer-attribute-collector"
     ],
     "homepage": "https://www.yiiframework.com/",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/yiisoft/_____/issues?state=open",
+        "issues": "https://github.com/yiisoft/router-composer-attribute-collector/issues?state=open",
         "forum": "https://www.yiiframework.com/forum/",
         "wiki": "https://www.yiiframework.com/wiki/",
         "irc": "ircs://irc.libera.chat:6697/yii",
         "chat": "https://t.me/yii3en",
-        "source": "https://github.com/yiisoft/_____"
+        "source": "https://github.com/yiisoft/router-composer-attribute-collector"
     },
     "funding": [
         {
@@ -28,7 +28,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^8.1"
+        "php": "^8.1",
+        "olvlvl/composer-attribute-collector": "^2.0",
+        "yiisoft/router": "@dev"
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^4.6",
@@ -40,12 +42,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Yiisoft\\_____\\": "src"
+            "Yiisoft\\Router\\ComposerAttributeCollector\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Yiisoft\\_____\\Tests\\": "tests"
+            "Yiisoft\\Router\\ComposerAttributeCollector\\Tests\\": "tests"
         }
     },
     "config": {
