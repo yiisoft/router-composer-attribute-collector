@@ -2,20 +2,20 @@
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://yiisoft.github.io/docs/images/yii_logo.svg" height="100px">
     </a>
-    <h1 align="center">Yii _____</h1>
+    <h1 align="center">Yii Router Composer Attribute Composer Collector</h1>
     <br>
 </p>
 
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/_____/v/stable.png)](https://packagist.org/packages/yiisoft/_____)
-[![Total Downloads](https://poser.pugx.org/yiisoft/_____/downloads.png)](https://packagist.org/packages/yiisoft/_____)
-[![Build status](https://github.com/yiisoft/_____/workflows/build/badge.svg)](https://github.com/yiisoft/_____/actions?query=workflow%3Abuild)
-[![Code Coverage](https://codecov.io/gh/yiisoft/_____/branch/master/graph/badge.svg)](https://codecov.io/gh/yiisoft/_____)
-[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fyiisoft%2F_____%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/yiisoft/_____/master)
-[![static analysis](https://github.com/yiisoft/_____/workflows/static%20analysis/badge.svg)](https://github.com/yiisoft/_____/actions?query=workflow%3A%22static+analysis%22)
-[![type-coverage](https://shepherd.dev/github/yiisoft/_____/coverage.svg)](https://shepherd.dev/github/yiisoft/_____)
-[![psalm-level](https://shepherd.dev/github/yiisoft/_____/level.svg)](https://shepherd.dev/github/yiisoft/_____)
+[![Latest Stable Version](https://poser.pugx.org/yiisoft/router-composer-attribute-collector/v/stable.png)](https://packagist.org/packages/yiisoft/router-composer-attribute-collector)
+[![Total Downloads](https://poser.pugx.org/yiisoft/router-composer-attribute-collector/downloads.png)](https://packagist.org/packages/yiisoft/router-composer-attribute-collector)
+[![Build status](https://github.com/yiisoft/router-composer-attribute-collector/workflows/build/badge.svg)](https://github.com/yiisoft/router-composer-attribute-collector/actions?query=workflow%3Abuild)
+[![Code Coverage](https://codecov.io/gh/yiisoft/router-composer-attribute-collector/branch/master/graph/badge.svg)](https://codecov.io/gh/yiisoft/router-composer-attribute-collector)
+[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fyiisoft%2Frouter-composer-attribute-collector%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/yiisoft/router-composer-attribute-collector/master)
+[![static analysis](https://github.com/yiisoft/router-composer-attribute-collector/workflows/static%20analysis/badge.svg)](https://github.com/yiisoft/router-composer-attribute-collector/actions?query=workflow%3A%22static+analysis%22)
+[![type-coverage](https://shepherd.dev/github/yiisoft/router-composer-attribute-collector/coverage.svg)](https://shepherd.dev/github/yiisoft/router-composer-attribute-collector)
+[![psalm-level](https://shepherd.dev/github/yiisoft/router-composer-attribute-collector/level.svg)](https://shepherd.dev/github/yiisoft/router-composer-attribute-collector)
 
-The package ...
+The package provides a router collector for [Yii Router](https://github.com/yiisoft/router) that collects routes declared through attributes.
 
 ## Requirements
 
@@ -26,7 +26,7 @@ The package ...
 The package could be installed with composer:
 
 ```shell
-composer require yiisoft/_____
+composer require yiisoft/router-composer-attribute-collector
 ```
 
 ## General usage
@@ -74,7 +74,7 @@ Use [ComposerRequireChecker](https://github.com/maglnet/ComposerRequireChecker) 
 
 ## License
 
-The Yii _____ is free software. It is released under the terms of the BSD License.
+The Yii Router Composer Attribute Composer Collector is free software. It is released under the terms of the BSD License.
 Please see [`LICENSE`](./LICENSE.md) for more information.
 
 Maintained by [Yii Software](https://www.yiiframework.com/).
