@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace src;
+namespace Yiisoft\Router\ComposerAttributeCollector;
 
 use olvlvl\ComposerAttributeCollector\Attributes;
 use ReflectionAttribute;
@@ -34,12 +34,12 @@ final class AttributeRoutesProvider implements RoutesProviderInterface
             $routeAttribute = $targetMethod->attribute;
             $route = $routeAttribute->getRoute();
             $targetMethodReflection = self::$reflectionsCache[$targetMethod->class] ??= new ReflectionClass(
-                $targetMethod->class
+                $targetMethod->class,
             );
             /** @var Group[] $groupAttributes */
             $groupAttributes = $targetMethodReflection->getAttributes(
                 Group::class,
-                ReflectionAttribute::IS_INSTANCEOF
+                ReflectionAttribute::IS_INSTANCEOF,
             );
             if (!empty($groupAttributes)) {
                 $groupRoutes[$targetMethod->class][] = $route->action([$targetMethod->class, $targetMethod->name]);
@@ -47,7 +47,7 @@ final class AttributeRoutesProvider implements RoutesProviderInterface
                 $routes[] = $route->action([$targetMethod->class, $targetMethod->name]);
             }
         }
-        $groupPredicate = static fn (string $attribute): bool => is_a($attribute, Route::class, true)
+        $groupPredicate = static fn(string $attribute): bool => is_a($attribute, Route::class, true)
             || is_a($attribute, Group::class, true);
         $targetClasses = Attributes::filterTargetClasses($groupPredicate);
         foreach ($targetClasses as $targetClass) {
