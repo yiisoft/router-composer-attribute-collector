@@ -61,6 +61,9 @@ final class AttributeRoutesProviderTest extends TestCase
         $this->assertInstanceOf(Route::class, $route);
         $this->assertSame('/', $route->getData('pattern'));
         $this->assertSame(['GET'], $route->getData('methods'));
+
+        $middlewares = $route->getData('enabledMiddlewares');
+        $this->assertSame([[TestController::class, 'index']], $middlewares);
     }
 
     public function testReturnsMultipleUngroupedRoutes(): void
@@ -227,6 +230,104 @@ final class AttributeRoutesProviderTest extends TestCase
         $this->assertInstanceOf(Route::class, $route);
         $this->assertSame('', $route->getData('pattern'));
         $this->assertSame(['GET'], $route->getData('methods'));
+
+        $middlewares = $route->getData('enabledMiddlewares');
+        $this->assertSame([[PostController::class, 'list']], $middlewares);
+    }
+
+    public function testClassLevelRouteAndGroupCoexist(): void
+    {
+        $this->setUpCollection(
+            targetClasses: [
+                Route::class => [
+                    [[['GET'], '/test'], TestController::class],
+                ],
+                Group::class => [
+                    [['/post'], PostController::class],
+                ],
+            ],
+            targetMethods: [
+                Get::class => [
+                    [[''], PostController::class, 'list'],
+                ],
+            ],
+        );
+
+        $provider = new AttributeRoutesProvider();
+        $routes = $provider->getRoutes();
+
+        $this->assertCount(2, $routes);
+
+        $hasGroup = false;
+        $hasClassRoute = false;
+        foreach ($routes as $route) {
+            if ($route instanceof Group) {
+                $hasGroup = true;
+                $this->assertSame('/post', $route->getData('prefix'));
+            } elseif ($route instanceof Route) {
+                $hasClassRoute = true;
+                $this->assertSame('/test', $route->getData('pattern'));
+            }
+        }
+
+        $this->assertTrue($hasGroup);
+        $this->assertTrue($hasClassRoute);
+    }
+
+    public function testReflectionCacheIsUsedForSameClass(): void
+    {
+        $this->setUpCollection(
+            targetClasses: [
+                Group::class => [
+                    [['/post'], PostController::class],
+                ],
+            ],
+            targetMethods: [
+                Get::class => [
+                    [[''], PostController::class, 'list'],
+                    [['/{slug}'], PostController::class, 'view'],
+                ],
+            ],
+        );
+
+        $provider = new AttributeRoutesProvider();
+        $routes = $provider->getRoutes();
+
+        $this->assertCount(1, $routes);
+
+        $group = $routes[0];
+        $this->assertInstanceOf(Group::class, $group);
+
+        $groupRoutes = $group->getData('routes');
+        $this->assertCount(2, $groupRoutes);
+
+        $this->assertSame([[PostController::class, 'list']], $groupRoutes[0]->getData('enabledMiddlewares'));
+        $this->assertSame([[PostController::class, 'view']], $groupRoutes[1]->getData('enabledMiddlewares'));
+    }
+
+    public function testUnrelatedClassAttributeIsIgnored(): void
+    {
+        $this->setUpCollection(
+            targetClasses: [
+                Get::class => [
+                    [['/ignored'], TestController::class],
+                ],
+                Group::class => [
+                    [['/post'], PostController::class],
+                ],
+            ],
+            targetMethods: [
+                Get::class => [
+                    [[''], PostController::class, 'list'],
+                ],
+            ],
+        );
+
+        $provider = new AttributeRoutesProvider();
+        $routes = $provider->getRoutes();
+
+        $this->assertCount(1, $routes);
+        $this->assertInstanceOf(Group::class, $routes[0]);
     }
 
     public function testGroupWithoutMatchingRoutesIsNotIncluded(): void

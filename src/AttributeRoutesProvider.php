@@ -33,6 +33,7 @@ final class AttributeRoutesProvider implements RoutesProviderInterface
             /** @var RouteAttributeInterface $routeAttribute */
             $routeAttribute = $targetMethod->attribute;
             $route = $routeAttribute->getRoute();
+            /** @infection-ignore-all - ??= is a performance cache; = produces identical results */
             $targetMethodReflection = self::$reflectionsCache[$targetMethod->class] ??= new ReflectionClass(
                 $targetMethod->class,
             );
@@ -47,6 +48,7 @@ final class AttributeRoutesProvider implements RoutesProviderInterface
                 $routes[] = $route->action([$targetMethod->class, $targetMethod->name]);
             }
         }
+        /** @infection-ignore-all - loop body checks instanceof; predicate is an optimization filter */
         $groupPredicate = static fn(string $attribute): bool => is_a($attribute, Route::class, true)
             || is_a($attribute, Group::class, true);
         $targetClasses = Attributes::filterTargetClasses($groupPredicate);
