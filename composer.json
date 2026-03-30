@@ -1,19 +1,19 @@
 {
-    "name": "yiisoft/_____",
+    "name": "yiisoft/router-composer-attribute-collector",
     "type": "library",
-    "description": "_____",
+    "description": "Router collector from PHP Attributes using composer plugin",
     "keywords": [
-        "_____"
+        "router", "composer-attribute-collector"
     ],
     "homepage": "https://www.yiiframework.com/",
     "license": "BSD-3-Clause",
     "support": {
-        "issues": "https://github.com/yiisoft/_____/issues?state=open",
+        "issues": "https://github.com/yiisoft/router-composer-attribute-collector/issues?state=open",
         "forum": "https://www.yiiframework.com/forum/",
         "wiki": "https://www.yiiframework.com/wiki/",
         "irc": "ircs://irc.libera.chat:6697/yii",
         "chat": "https://t.me/yii3en",
-        "source": "https://github.com/yiisoft/_____"
+        "source": "https://github.com/yiisoft/router-composer-attribute-collector"
     },
     "funding": [
         {
@@ -28,35 +28,47 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^8.1"
+        "php": "8.1 - 8.5",
+        "olvlvl/composer-attribute-collector": "^2.0",
+        "yiisoft/router": "dev-add-attributes as 4"
     },
     "require-dev": {
-        "maglnet/composer-require-checker": "^4.6",
-        "phpunit/phpunit": "^9.5",
-        "rector/rector": "^0.17.11",
-        "roave/infection-static-analysis-plugin": "^1.16",
+        "maglnet/composer-require-checker": "^4.7.1",
+        "nyholm/psr7": "^1.8",
+        "phpunit/phpunit": "^10.5.45",
+        "rector/rector": "^2.0.9",
+        "roave/infection-static-analysis-plugin": "^1.35",
         "spatie/phpunit-watcher": "^1.23",
-        "vimeo/psalm": "^4.30|^5.7"
+        "vimeo/psalm": "^5.26.1 || ^6.8.6",
+        "yiisoft/code-style": "^1.0",
+        "yiisoft/router-fastroute": "^4.0",
+        "yiisoft/test-support": "^3.2"
     },
     "autoload": {
         "psr-4": {
-            "Yiisoft\\_____\\": "src"
+            "Yiisoft\\Router\\ComposerAttributeCollector\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Yiisoft\\_____\\Tests\\": "tests"
+            "Yiisoft\\Router\\ComposerAttributeCollector\\Tests\\": "tests"
         }
     },
     "config": {
         "sort-packages": true,
         "allow-plugins": {
+            "composer/package-versions-deprecated": true,
             "infection/extension-installer": true,
-            "composer/package-versions-deprecated": true
+            "olvlvl/composer-attribute-collector": true
         }
     },
     "scripts": {
-        "test": "phpunit --testdox --no-interaction",
+        "composer-require-checker": "composer-require-checker",
+        "cs-fix": "php-cs-fixer fix",
+        "infection": "roave-infection-static-analysis-plugin --threads=max",
+        "psalm": "psalm",
+        "rector": "rector",
+        "test": "phpunit --testdox",
         "test-watch": "phpunit-watcher watch"
     }
 }
