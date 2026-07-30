@@ -49,7 +49,7 @@ final class AttributeRoutesProvider implements RoutesProviderInterface
             }
         }
         /** @infection-ignore-all - loop body checks instanceof; predicate is an optimization filter */
-        $groupPredicate = static fn (string $attribute): bool => is_a($attribute, Route::class, true)
+        $groupPredicate = static fn(string $attribute): bool => is_a($attribute, Route::class, true)
             || is_a($attribute, Group::class, true);
         $targetClasses = Attributes::filterTargetClasses($groupPredicate);
         foreach ($targetClasses as $targetClass) {
