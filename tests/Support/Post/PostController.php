@@ -14,27 +14,17 @@ use Yiisoft\Router\Group;
 final class PostController
 {
     #[Get('')]
-    public function list()
-    {
-    }
+    public function list() {}
 
     #[Get('/{slug}')]
-    public function view()
-    {
-    }
+    public function view() {}
 
     #[Put('/{slug}')]
-    public function edit()
-    {
-    }
+    public function edit() {}
 
     #[Post('/')]
-    public function create()
-    {
-    }
+    public function create() {}
 
     #[Delete('/{slug}')]
-    public function delete()
-    {
-    }
+    public function delete() {}
 }

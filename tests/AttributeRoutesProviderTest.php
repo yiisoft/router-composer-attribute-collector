@@ -86,7 +86,7 @@ final class AttributeRoutesProviderTest extends TestCase
         $this->assertCount(2, $routes);
 
         $patterns = array_map(
-            static fn (Group|Route $route): string => $route->getData('pattern'),
+            static fn(Group|Route $route): string => $route->getData('pattern'),
             $routes,
         );
         $this->assertContains('/', $patterns);
@@ -194,7 +194,7 @@ final class AttributeRoutesProviderTest extends TestCase
         $this->assertCount(2, $routes);
 
         $routeTypes = array_map(
-            static fn (Route|Group $route): string => $route instanceof Group ? 'group' : 'route',
+            static fn(Route|Group $route): string => $route instanceof Group ? 'group' : 'route',
             $routes,
         );
 
@@ -354,7 +354,7 @@ final class AttributeRoutesProviderTest extends TestCase
     private function setUpCollection(array $targetClasses, array $targetMethods): void
     {
         $this->previousProvider = Attributes::with(
-            static fn (): Collection => new Collection(
+            static fn(): Collection => new Collection(
                 targetClasses: $targetClasses,
                 targetMethods: $targetMethods,
                 targetProperties: [],
